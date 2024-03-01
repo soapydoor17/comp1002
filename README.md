@@ -1,2 +1,2 @@
-# comp1002
-COMP1002 - Data Structures and Algorithms
+# COMP1002
+Data Structures and Algorithms
