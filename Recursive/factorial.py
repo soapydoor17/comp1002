@@ -22,21 +22,44 @@ def calcNFactorialRecursive(n):
 
 
 # Main Program
-print('Factorial Number')
-n = input('\nEnter a number: ')
-n = int(n) # catch not integer
-option = input('[I]terative or [R]ecursive?: ')
-startTime = timeit.default_timer()
+def main():
+    print('Factorial Number\n')
+    numSuccess = False
+    optionSuccess = False
+    validOptions = ['I', 'R']
 
-if any(option == i for i in ['I', 'i']):
-    factorial = calcNFactorialIterative(n)
-elif any(option == i for i in ['R', 'r']):
-    factorial = calcNFactorialRecursive(n)
-else:
-    print('That is not a valid entry. Re run the program') # add this to exception
+    while not numSuccess:
+        try:
+            n = input('Enter a number: ')
+            n = int(n) # catch not integer
+            if n < 0:
+                raise ValueError
+            numSuccess = True
+        except ValueError:
+            print("\nThat is not a valid number, please try again")
 
-endTime = timeit.default_timer()
-runTime = endTime - startTime
+    while not optionSuccess:
+        try:
+            option = input('[I]terative or [R]ecursive?: ')
+            option = option.upper()
+            if not any(option == o for o in validOptions):
+                raise ValueError
+            optionSuccess = True
+        except ValueError:
+            print("\nThat is not a valid input, please try again")
 
-print('\nThe factorial of', n, 'is', factorial)
-print('METHOD:', option, '\tTIME:', runTime)
+    startTime = timeit.default_timer()
+
+    if option == 'I':
+        factorial = calcNFactorialIterative(n)
+    elif option == 'R':
+        factorial = calcNFactorialRecursive(n)
+
+    endTime = timeit.default_timer()
+    runTime = endTime - startTime
+
+    print('\nThe factorial of', n, 'is', factorial)
+    print('METHOD:', option, '\tTIME:', runTime)
+
+if __name__ == "__main__":
+    main()
