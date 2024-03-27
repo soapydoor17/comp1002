@@ -41,7 +41,7 @@ def main():
         try:
             n = input('Enter a number: ')
             n = int(n) # catch not integer
-            if n < 0:
+            if n < 0 or n > 50:
                 raise ValueError
             numSuccess = True
         except ValueError:
