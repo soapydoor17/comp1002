@@ -57,15 +57,15 @@ class DSAStack():
             topVal = self.stack[self.count-1]
             return topVal
         
-    def push(self, obj):
+    def push(self, inValue):
         ''' MUTATOR: Adds a new element to the top of the stack
         
-        obj - element to be added to stack
+        inValue - element to be added to stack
         '''
         if self.isFull():
             raise FullException('Stack is full')
         else:
-            self.stack[self.count] = obj
+            self.stack[self.count] = inValue
             self.count += 1
 
     def pop(self):
@@ -116,15 +116,15 @@ class DSAQueue():
             frontVal = self.queue[0]
             return frontVal
         
-    def enqueue(self, obj):
+    def enqueue(self, inValue):
         ''' MUTATOR: adds to the end of the queue
         
-        obj - element to be added to the queue
+        inValue - element to be added to the queue
         '''
         if self.isFull():
             raise FullException('Queue is full')
         else:
-            self.queue[self.count] = obj
+            self.queue[self.count] = inValue
             self.count += 1
 
     def dequeue(self):
@@ -149,7 +149,7 @@ class CircularQueue(DSAQueue):
         self.front = 0
 
     def peek(self):
-        ''' ACCESSOR: Looks at last item but leaves it in the stack
+        ''' ACCESSOR: Looks at first item but leaves it in the stack
         '''
         if self.isEmpty():
             raise EmptyException('Queue is empty')
@@ -157,16 +157,16 @@ class CircularQueue(DSAQueue):
             frontVal = self.queue[self.front]
             return frontVal
         
-    def enqueue(self, obj):
+    def enqueue(self, inValue):
         ''' MUTATOR: adds to the end of the queue
         
-        obj - element to be added to the queue
+        inValue - element to be added to the queue
         '''
         if self.isFull():
             raise FullException('Queue is full')
         else:
             index = (self.front + self.count) % len(self.queue)  # modulus accounts for overflow
-            self.queue[index] = obj
+            self.queue[index] = inValue
             self.count += 1
 
     def dequeue(self):
