@@ -2,9 +2,8 @@
 # Adapting Code from StacksAndQueues.py from Prac 3
 
 # Activity 1 and 2 of Prac 3
-# Implementation of Stacks and Queues using arrays as the data structure
+# Implementation of Stacks and Queues using LINKED LISTS as the data structure
 # Contains code for DSAStack, DSAQueue, ShufflingQueue and CircularQueue
-# Also contains custom exceptions for when ADTs are full or empty
 
 import LinkedLists as ll
 

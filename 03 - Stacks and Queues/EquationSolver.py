@@ -119,3 +119,21 @@ def solve(equation):
     answer = _evaluatePostfix(postfixQueue)
 
     return answer
+
+def main():
+    print('\nEquation Solver Test')
+    inputSuccess = False
+
+    while not inputSuccess:
+        try:
+            equation = input('\nEnter an equation: ')
+            answer = solve(equation)
+            inputSuccess = True
+        except ValueError:
+            print("\nThat is not a valid equation. Try again")
+            print("Note that operands, operators and brackets must be separated by a space")
+
+    print('\nThe answer is', answer)
+
+if __name__ == "__main__":
+    main()
