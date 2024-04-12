@@ -6,7 +6,7 @@ import LinkedLists as ll
 print('\nWelcome to the Linked List Interactive Menu\n')
 
 linkedList = ll.DSALinkedList()
-validOptions = ['I', 'R', 'D', 'X']
+validOptions = ['I', 'R', 'D', 'X', 'P']
 exit = False
 
 while not exit:
@@ -14,7 +14,7 @@ while not exit:
     while not optionSuccess:
         try:
             print('Selection an action')
-            print('[I]nsert, [R]emove, [D]isplay, e[X]it')
+            print('[I]nsert, [R]emove, [D]isplay, [P]eek, e[X]it')
             option = input('Enter option: ')
             option = option.upper()
             if not any(option == o for o in validOptions):
@@ -25,7 +25,6 @@ while not exit:
 
     if option == 'I':
         BESuccess = False
-        valueSuccess = False
 
         while not BESuccess:
             try:
@@ -38,13 +37,7 @@ while not exit:
             except ValueError:
                 print('\nThat is not a valid option, please try again')
 
-        while not valueSuccess:
-            try:
-                value = input('Enter value to insert (must be an integer): ')
-                value = int(value)
-                valueSuccess = True
-            except ValueError:
-                print('\nThat is not a valid option, please try again\n')
+        value = input('Enter value to insert: ')
 
         print()
 
@@ -89,6 +82,28 @@ while not exit:
                 print(currNd.getValue())
                 currNd = currNd.getNext()
         print()
+
+    elif option == 'P':
+        FLsuccess = False
+
+        if linkedList.isEmpty():
+            print('\nCannot peek any items as the linked list is empty\n')
+        else:
+            while not FLsuccess:
+                try:
+                    print('\nPeek the [F]irst or [L]ast value?')
+                    firstLast = input("Enter option: ")
+                    firstLast = firstLast.upper()
+                    if not any(firstLast == o for o in ['F', 'L']):
+                        raise ValueError
+                    FLsuccess = True
+                except ValueError:
+                    print('\nThat is not a valid option, please try again')
+
+            if firstLast == 'F':
+                print('\nFirst Value:', linkedList.peekFirst(), '\n')
+            else:
+                print('\nLast Value:', linkedList.peekLast(), '\n')
 
     else:
         exit = True

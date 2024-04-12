@@ -106,7 +106,13 @@ class DSAQueue():
         '''
         full = (self.count == self.capacity)
         return full
-    
+
+class ShufflingQueue(DSAQueue):
+    def __init__(self, maxCapacity=100):
+        ''' INITIALISATION - inherits from DSAQueue
+        '''
+        super().__init__(maxCapacity)
+
     def peek(self):
         ''' ACCESSOR: Looks at last item but leaves it in the stack
         '''
@@ -135,9 +141,6 @@ class DSAQueue():
             self.queue[i-1] = self.queue[i]
         self.count -= 1
         return frontVal
-
-class ShufflingQueue(DSAQueue):
-    pass
 
 class CircularQueue(DSAQueue):
     def __init__(self, maxCapacity=100):
